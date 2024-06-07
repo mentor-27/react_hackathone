@@ -1,7 +1,13 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const BadgeContainer = ({ className, children }) => {
 	return <span className={className}>{children}</span>;
+};
+
+BadgeContainer.propTypes = {
+	className: PropTypes.string,
+	children: PropTypes.node.isRequired,
 };
 
 export const Badge = styled(BadgeContainer)`
@@ -17,3 +23,7 @@ export const Badge = styled(BadgeContainer)`
 	color: #fff;
 	background-color: ${({ color }) => color || '#007bff'};
 `;
+
+Badge.propTypes = {
+	color: PropTypes.string,
+};

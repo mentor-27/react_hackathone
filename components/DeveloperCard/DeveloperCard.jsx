@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const DeveloperCardContainer = ({ className, developer, onOpen, onAddToFavorites }) => {
@@ -22,6 +23,19 @@ const DeveloperCardContainer = ({ className, developer, onOpen, onAddToFavorites
 			</div>
 		</div>
 	);
+};
+
+DeveloperCardContainer.propTypes = {
+	className: PropTypes.string,
+	developer: PropTypes.shape({
+		firstName: PropTypes.string.isRequired,
+		lastName: PropTypes.string.isRequired,
+		age: PropTypes.number.isRequired,
+		photo: PropTypes.string,
+		about: PropTypes.string.isRequired,
+	}).isRequired,
+	onOpen: PropTypes.func.isRequired,
+	onAddToFavorites: PropTypes.func.isRequired,
 };
 
 export const DeveloperCard = styled(DeveloperCardContainer)`

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const BreadcrumbsContainer = ({ className, items }) => {
@@ -18,6 +19,16 @@ const BreadcrumbsContainer = ({ className, items }) => {
 			</ul>
 		</nav>
 	);
+};
+
+BreadcrumbsContainer.propTypes = {
+	className: PropTypes.string,
+	items: PropTypes.arrayOf(
+		PropTypes.shape({
+			path: PropTypes.string.isRequired,
+			label: PropTypes.string.isRequired,
+		}),
+	).isRequired,
 };
 
 export const Breadcrumbs = styled(BreadcrumbsContainer)`

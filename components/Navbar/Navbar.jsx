@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const NavbarContainer = ({ className }) => {
 	const [activeLink, setActiveLink] = useState('/');
 
-	const handleLinkClick = (path) => {
+	const handleLinkClick = path => {
 		setActiveLink(path);
 	};
 
@@ -44,6 +45,10 @@ const NavbarContainer = ({ className }) => {
 			</nav>
 		</div>
 	);
+};
+
+NavbarContainer.propTypes = {
+	className: PropTypes.string,
 };
 
 export const Navbar = styled(NavbarContainer)`

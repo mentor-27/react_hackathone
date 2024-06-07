@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ProgressContainer = ({ className, percent, label, color, type }) => {
@@ -33,6 +34,14 @@ const ProgressContainer = ({ className, percent, label, color, type }) => {
 			)}
 		</div>
 	);
+};
+
+ProgressContainer.propTypes = {
+	className: PropTypes.string,
+	percent: PropTypes.number.isRequired,
+	label: PropTypes.string,
+	color: PropTypes.string,
+	type: PropTypes.string.isRequired,
 };
 
 export const Progress = styled(ProgressContainer)`

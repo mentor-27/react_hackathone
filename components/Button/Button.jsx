@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ButtonContainer = ({ className, onClick, children }) => {
@@ -6,6 +7,12 @@ const ButtonContainer = ({ className, onClick, children }) => {
 			{children}
 		</button>
 	);
+};
+
+ButtonContainer.propTypes = {
+	className: PropTypes.string,
+	onClick: PropTypes.func.isRequired,
+	children: PropTypes.node.isRequired,
 };
 
 export const Button = styled(ButtonContainer)`
