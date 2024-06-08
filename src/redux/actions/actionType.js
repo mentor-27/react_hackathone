@@ -1,0 +1,6 @@
+export const ACTION_TYPE = {
+	SET_DEV: 'SET_DEV',
+	SET_DEVS: 'SET_DEVS',
+	SET_MODAL: 'SET_MODAL',
+	HIDE_MODAL: 'HIDE_MODAL',
+};

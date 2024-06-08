@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const AppContainer = ({ className }) => {
 	return (
 		<div className={className}>
-			<Header></Header>
+			<Header />
 			<Content>
 				<Routes>
 					<Route path="/" element={<Main />} />
@@ -14,7 +14,7 @@ const AppContainer = ({ className }) => {
 					<Route path="/favorites" element={<Favorites />} />
 				</Routes>
 			</Content>
-			<Footer></Footer>
+			<Footer />
 		</div>
 	);
 };
