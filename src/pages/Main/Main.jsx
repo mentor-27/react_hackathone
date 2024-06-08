@@ -1,11 +1,15 @@
 import { Link } from 'react-router-dom';
+import { Title } from '../../components';
 import styled from 'styled-components';
 
 const MainContainer = ({ className }) => {
 	return (
 		<div className={className}>
-			<Link to="/devPage">Разработчик</Link>
-			<Link to="/favorites">Избранные</Link>
+			<Title level="1" textAlign="center" margin="64px 0 16px" size="2.2rem">
+				Главная страница участников
+				<br />
+				разработки приложения хакатона
+			</Title>
 		</div>
 	);
 };
