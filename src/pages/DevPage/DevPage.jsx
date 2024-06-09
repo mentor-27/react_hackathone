@@ -1,99 +1,103 @@
+import { useCallback, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useMatch } from 'react-router-dom';
+
+import { Badge, Button, Title } from '../../components';
+import { getDevelopers } from '../../api/getDevelopers';
+import { selectDevs } from '../../redux/selectors';
+import { getRandomColor } from '../../utils';
+import { DevProgress, DevStarFavorite } from './components';
+
 import styled from 'styled-components';
-import { Badge, Progress, Title } from '../../components';
-import { useState } from 'react';
 
 const DevPageContainer = ({ className }) => {
+	const [isLoading, setIsLoading] = useState(false);
 	const [isChecked, setIsChecked] = useState(false);
 	const [progressType, setProgressType] = useState('bar');
-	const [favorite, setFavorite] = useState(false);
+
+	const {
+		params: { id },
+	} = useMatch('/devPage/:id');
+	const [developer, setDeveloper] = useState(
+		useSelector(selectDevs).filter(dev => dev.id === id)[0],
+	);
+
+	useEffect(() => {
+		if (!developer) {
+			setIsLoading(true);
+			getDevelopers(id)
+				.then(loadedDevelopers => {
+					setDeveloper(loadedDevelopers);
+				})
+				.finally(() => {
+					setIsLoading(false);
+				});
+		}
+	}, [id, developer]);
 
 	const handleChange = () => {
 		setIsChecked(!isChecked);
 		progressType === 'bar' ? setProgressType('circle') : setProgressType('bar');
 	};
 
+	if (isLoading || !developer) {
+		return <div className={className}>Загрузка...</div>;
+	}
+
 	return (
 		<div className={className}>
 			<div className="devImg">
 				<img
-					src="https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-					alt="James Bond"
+					src={developer.imageUrl}
+					alt={`${developer.firstName}_${developer.lastName}`}
 				/>
 			</div>
 
-			<div className="devInfo" onClick={() => setFavorite(!favorite)}>
-				<div className="devStarFavorite">
-					{!favorite ? (
-						<img
-							width="50"
-							height="50"
-							src="https://img.icons8.com/ios/50/star--v1.png"
-							alt="star--v1"
-						/>
-					) : (
-						<img
-							width="50"
-							height="50"
-							src="https://img.icons8.com/ios-filled/50/star--v1.png"
-							alt="star--v1"
-						/>
-					)}
-				</div>
+			<div className="devInfo">
+				<DevStarFavorite id={id} />
 
-				<div className="toggle-switch">
+				<div className="toggleSwitch">
 					<input
 						type="checkbox"
 						id="switch"
 						checked={isChecked}
 						onChange={handleChange}
 					/>
-					<label htmlFor="switch" className="switch-label"></label>
+					<label htmlFor="switch" className="switchLabel"></label>
 				</div>
 
 				<div className="devInfoTop">
 					<Title level="2" size="1.5rem">
-						James Bond
+						{developer.firstName} {developer.lastName}
 					</Title>
-					<div className="devBadges">
-						<Badge color="teal">dev</Badge>
-					</div>
+
+					{developer.badges.map((titleBadge, index) => (
+						<div className="devBadges" key={index}>
+							<Badge color={() => getRandomColor()}>{titleBadge}</Badge>
+						</div>
+					))}
 				</div>
 
 				<div className="devInfoBottom">
-					<span>25 лет</span>
-					<p className="devAbout">
-						Являюсь опытным веб-разработчиком, я специализируюсь на создании динамичных и
-						отзывчивых сайтов. Мои навыки включают HTML, CSS, JavaScript, React и Node.js,
-						обеспечивая высокое качество работы.
-					</p>
+					<span>{developer.age} лет</span>
+					<p className="devAbout">{developer.about}</p>
 				</div>
 
-				<div className={progressType === 'bar' ? 'devProgress' : 'devProgress circle'}>
-					<Progress label="HTML" percent={95} color="teal" type={progressType} />
-					<Progress label="CSS" percent={50} color="teal" type={progressType} />
-					<Progress label="JavaScript" percent={80} color="teal" type={progressType} />
-					<Progress label="React" percent={70} color="teal" type={progressType} />
-				</div>
+				<DevProgress techs={developer.techs} progressType={progressType} />
 
-				<div className="devSocial">
-					<div className="devSocialItem">
-						<img
-							src="https://img.icons8.com/ios/50/google-logo--v1.png"
-							alt="google-logo--v1"
-						/>
+				{developer.contacts && (
+					<div className="devSocial">
+						{Object.entries(developer.contacts).map(([key, value]) => (
+							<Button
+								className="devSocialItem"
+								key={key}
+								onClick={({ target }) => console.log('target.value', target.textContent)}
+							>
+								{value}
+							</Button>
+						))}
 					</div>
-					<div className="devSocialItem">
-						<img src="https://img.icons8.com/ios/50/github--v1.png" alt="github--v1" />
-					</div>
-					<div className="devSocialItem">
-						<img
-							src="https://img.icons8.com/ios/50/instagram-new--v1.png"
-							alt="instagram-new--v1"
-						/>
-					</div>
-				</div>
-
-				<div className="devSliderPortfolio"></div>
+				)}
 			</div>
 		</div>
 	);
@@ -102,6 +106,7 @@ const DevPageContainer = ({ className }) => {
 export const DevPage = styled(DevPageContainer)`
 	display: flex;
 	flex-direction: column;
+	text-align: center;
 
 	& .devImg {
 		display: flex;
@@ -123,14 +128,7 @@ export const DevPage = styled(DevPageContainer)`
 		}
 	}
 
-	& .devStarFavorite {
-		position: absolute;
-		left: 20px;
-		top: 20px;
-		cursor: pointer;
-	}
-
-	& .toggle-switch {
+	& .toggleSwitch {
 		position: absolute;
 		right: 20px;
 		top: 20px;
@@ -143,7 +141,7 @@ export const DevPage = styled(DevPageContainer)`
 			width: 0;
 			height: 0;
 
-			&:checked + .switch-label {
+			&:checked + .switchLabel {
 				background-color: teal;
 
 				&::before {
@@ -152,7 +150,7 @@ export const DevPage = styled(DevPageContainer)`
 			}
 		}
 
-		& .switch-label {
+		& .switchLabel {
 			position: absolute;
 			cursor: pointer;
 			top: 0;
@@ -216,20 +214,6 @@ export const DevPage = styled(DevPageContainer)`
 			}
 		}
 
-		& .devProgress {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			padding: 0 30px;
-			width: 100%;
-
-			&.circle {
-				flex-direction: row;
-				justify-content: space-around;
-				align-items: center;
-			}
-		}
-
 		& .devSocial {
 			display: flex;
 			justify-content: center;
@@ -241,20 +225,12 @@ export const DevPage = styled(DevPageContainer)`
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				width: 50px;
-				height: 50px;
-				border-radius: 50%;
+				border-radius: 12px;
 				box-shadow: 0 0 6px #0006;
 				overflow: hidden;
 				padding: 0.6rem;
 				cursor: pointer;
 				transition: 0.3s ease-in-out;
-
-				& img {
-					width: 100%;
-					height: 100%;
-					object-fit: cover;
-				}
 
 				&:hover {
 					box-shadow: 0 0 12px #0006;
