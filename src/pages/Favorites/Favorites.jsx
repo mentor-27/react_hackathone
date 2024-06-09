@@ -5,7 +5,7 @@ import { Badge, DevCard, Title } from '../../components';
 import styled from 'styled-components';
 
 const FavoritesContainer = ({ className }) => {
-	const [favDevs, setFavoritesDevelopers] = useState([]);
+	const [favDevs, setFavDevs] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
@@ -14,7 +14,7 @@ const FavoritesContainer = ({ className }) => {
 
 		Promise.all(favIds.map(favId => getDevelopers(favId)))
 			.then(favDevs => {
-				setFavoritesDevelopers(favDevs);
+				setFavDevs(favDevs);
 				setLoading(false);
 			})
 			.catch(error => {
@@ -25,7 +25,7 @@ const FavoritesContainer = ({ className }) => {
 
 	const handleRemoveFavorite = id => {
 		removeFavFromLS(id);
-		setFavoritesDevelopers(favDevs.filter(developer => developer.id !== id));
+		setFavDevs(favDevs.filter(developer => developer.id !== id));
 	};
 
 	if (loading) {

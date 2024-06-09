@@ -16,6 +16,6 @@ export const addFavToLS = id => {
 
 export const removeFavFromLS = id => {
 	let favorites = getFavsFromLS();
-	favorites = favorites.filter(favoritesId => favoritesId !== +id);
+	favorites = favorites.filter(favoritesId => favoritesId !== id);
 	localStorage.setItem(LS_KEY, JSON.stringify(favorites));
 };
