@@ -13,7 +13,7 @@ const DevCardContainer = ({ className, dev, onClick }) => {
 				<img className="devImg" src={imageUrl} alt={`${lastName}_${firstName}`} />
 			</div>
 			<div className="devInfoContainer">
-				<Title level="3">{`${firstName} ${lastName}`}</Title>
+				<Title level="3" textAlign="right">{`${firstName} ${lastName}`}</Title>
 				<span>{getAgeSign(`${age}`)}</span>
 				{badges.length && (
 					<div className="devBadgesContainer">

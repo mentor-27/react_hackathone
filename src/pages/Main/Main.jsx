@@ -20,7 +20,7 @@ const MainContainer = ({ className }) => {
 			})
 			.catch(setError)
 			.finally(() => setIsLoading(false));
-	}, []);
+	}, [dispatch]);
 
 	if (isLoading) {
 		return <div className={className}>Загрузка...</div>;
