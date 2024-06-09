@@ -5,18 +5,16 @@ import { Badge, DevCard, Title } from '../../components';
 import styled from 'styled-components';
 
 const FavoritesContainer = ({ className }) => {
-	const [favoritesDevelopers, setFavoritesDevelopers] = useState([]);
+	const [favDevs, setFavoritesDevelopers] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
-		const favoritesIds = getFavsFromLS();
+		const favIds = getFavsFromLS();
 
-		Promise.all(
-			favoritesIds.map(favoriteDeveloperId => getDevelopers(favoriteDeveloperId)),
-		)
-			.then(favoriteDevelopers => {
-				setFavoritesDevelopers(favoriteDevelopers);
+		Promise.all(favIds.map(favId => getDevelopers(favId)))
+			.then(favDevs => {
+				setFavoritesDevelopers(favDevs);
 				setLoading(false);
 			})
 			.catch(error => {
@@ -27,7 +25,7 @@ const FavoritesContainer = ({ className }) => {
 
 	const handleRemoveFavorite = id => {
 		removeFavFromLS(id);
-		setFavoritesDevelopers(favoritesDevelopers.filter(developer => developer.id !== id));
+		setFavoritesDevelopers(favDevs.filter(developer => developer.id !== id));
 	};
 
 	if (loading) {
@@ -47,8 +45,8 @@ const FavoritesContainer = ({ className }) => {
 					приложения хакатона
 				</Title>
 				<div className="cards">
-					{favoritesDevelopers.length > 0 ? (
-						favoritesDevelopers.map(favoriteDeveloper => (
+					{favDevs.length > 0 ? (
+						favDevs.map(favoriteDeveloper => (
 							<DevCard
 								key={favoriteDeveloper.id}
 								dev={favoriteDeveloper}

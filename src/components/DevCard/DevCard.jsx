@@ -6,7 +6,7 @@ const DevCardContainer = ({ className, dev, onClick }) => {
 	const { id, firstName, lastName, age, about, imageUrl, badges } = dev;
 
 	return (
-		<div className={className} {...(onClick ? { onClick: onClick(id) } : {})}>
+		<div className={className} {...(onClick ? { onClick: onClick } : {})}>
 			<div className="tlDeco"></div>
 			<div className="brDeco"></div>
 			<div className="devImgContainer">
