@@ -1,5 +1,5 @@
-import { transformDeveloper } from './utils';
-import { URL } from './const';
+import { transformDeveloper } from './transformers';
+import { URL } from './consts';
 
 export const getDevelopers = (id = '') => {
 	return fetch(URL.DEVELOPERS + id)

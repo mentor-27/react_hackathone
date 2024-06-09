@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getDevelopers } from '../../requests';
+import { getDevelopers } from '../../api';
 import { Badge, DevCard, Title } from '../../components';
 import styled from 'styled-components';
 

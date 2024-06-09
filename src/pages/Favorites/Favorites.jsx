@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getDevelopers } from '../../requests';
+import { getDevelopers } from '../../api';
 import {
 	addFavoriteDevelopersInLocalStorage,
 	getFavoriteDevelopersFromLocalStorage,
