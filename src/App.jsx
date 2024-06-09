@@ -10,8 +10,9 @@ const AppContainer = ({ className }) => {
 			<Content>
 				<Routes>
 					<Route path="/" element={<Main />} />
-					<Route path="/devPage" element={<DevPage />} />
+					<Route path="/devPage/:id" element={<DevPage />} />
 					<Route path="/favorites" element={<Favorites />} />
+					<Route path="/*" element={<h1>Страница не найдена</h1>} />
 				</Routes>
 			</Content>
 			<Footer />

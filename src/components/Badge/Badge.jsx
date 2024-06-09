@@ -12,11 +12,11 @@ BadgeContainer.propTypes = {
 
 export const Badge = styled(BadgeContainer)`
 	display: inline-block;
-	padding: 4px 8px;
+	padding: 2px 4px;
 	width: fit-content;
 	height: fit-content;
 	margin: 2px;
-	font-size: 12px;
+	font-size: 10px;
 	font-weight: 600;
 	text-align: center;
 	white-space: nowrap;

@@ -1,4 +1,4 @@
-import { Title } from '../';
+import { Navbar, Title } from '../';
 import styled from 'styled-components';
 
 const HeaderContainer = ({ className }) => {
@@ -11,14 +11,16 @@ const HeaderContainer = ({ className }) => {
 					Team
 				</Title>
 			</div>
+			<Navbar />
+			<i></i>
 		</header>
 	);
 };
 
 export const Header = styled(HeaderContainer)`
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	justify-content: space-between;
+	align-items: center;
 	width: 1200px;
 	height: 80px;
 	position: fixed;

@@ -1,8 +1,8 @@
 import { ACTION_TYPE } from '../actions';
 
-const initialUserState = [];
+const initialDevsState = [];
 
-export const userReducer = (state = initialUserState, action) => {
+export const devsReducer = (state = initialDevsState, action) => {
 	const { type, payload } = action;
 
 	switch (type) {

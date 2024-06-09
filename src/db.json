@@ -7,7 +7,10 @@
 			"age": 30,
 			"about": "frontend-разработчик, тимлид",
 			"image_url": "https://fastly.picsum.photos/id/337/150/150.jpg?hmac=iv5Xj43KQpu4y6LEbWeQOxdD4oFCeVndzuVmm_MvVUw",
-			"contacts": null
+			"contacts": {
+				"phone": "+7 987 123 4567",
+				"email": "dev@ya.ru"
+			}
 		},
 		{
 			"id": 2,

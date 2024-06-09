@@ -28,3 +28,35 @@ body {
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+a:any-link {
+	color: #000;
+
+	text-decoration: none;
+}
+
+main::-webkit-scrollbar {
+	width: 10px;
+
+	border-radius: 0 6px 6px 0;
+	background-color: #333;
+}
+
+main::-webkit-scrollbar:hover {
+	background-color: #444;
+}
+
+main::-webkit-scrollbar-thumb {
+	border-radius: 0 6px 6px 0;
+	background-color: #555;
+}
+
+main::-webkit-scrollbar-thumb:hover {
+	border: none;
+	background-color: #888;
+}
+
+main::-webkit-scrollbar-thumb:active {
+	border: none;
+	background-color: #aaa;
+}
