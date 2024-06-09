@@ -7,6 +7,7 @@
 			"age": 30,
 			"about": "frontend-разработчик, тимлид",
 			"image_url": "https://fastly.picsum.photos/id/337/150/150.jpg?hmac=iv5Xj43KQpu4y6LEbWeQOxdD4oFCeVndzuVmm_MvVUw",
+			"badges": ["teamlead", "dev"],
 			"contacts": {
 				"phone": "+7 987 123 4567",
 				"email": "dev@ya.ru"
@@ -19,6 +20,7 @@
 			"age": 30,
 			"about": "frontend-разработчик",
 			"image_url": "https://fastly.picsum.photos/id/740/150/150.jpg?hmac=BiG8AZA2fAr6PmMVPTQWvkOQUiRSSjo2SUik43nJ7Us",
+			"badges": ["dev"],
 			"contacts": null
 		},
 		{
@@ -28,6 +30,7 @@
 			"age": 37,
 			"about": "frontend-разработчик",
 			"image_url": "https://fastly.picsum.photos/id/981/150/150.jpg?hmac=BdaUDERcitfyXVohdj2-IsbKZimqshEON1UihYc5lKw",
+			"badges": ["dev"],
 			"contacts": null
 		},
 		{
@@ -37,6 +40,7 @@
 			"age": 27,
 			"about": "frontend-разработчик",
 			"image_url": "https://fastly.picsum.photos/id/999/150/150.jpg?hmac=pztvMJgV08apuMia_aADgaSLBhyB-eJ2w6nwxZR4NRc",
+			"badges": ["dev"],
 			"contacts": null
 		},
 		{
@@ -46,6 +50,7 @@
 			"age": 27,
 			"about": "frontend-разработчик",
 			"image_url": "https://fastly.picsum.photos/id/586/150/150.jpg?hmac=Qy0on7NjDF8LIRY2zbW9e6w4zco_fLPizk4cTrSt15Q",
+			"badges": ["dev"],
 			"contacts": null
 		}
 	]
