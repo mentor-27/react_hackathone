@@ -42,7 +42,7 @@ const MainContainer = ({ className }) => {
 			<div className="cards">
 				{devs.length ? (
 					devs.map(dev => (
-						<Link key={dev.id} to={`devPage/${dev.id}`}>
+						<Link key={dev.id} to={`/devPage/${dev.id}`}>
 							<DevCard key={dev.id} dev={dev} />
 						</Link>
 					))

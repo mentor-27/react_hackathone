@@ -1,12 +1,15 @@
 import { NavLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const NavbarContainer = ({ className }) => {
 	return (
 		<div className={className}>
-			<NavLink to="/">Главная</NavLink>
-			<NavLink to="/favorites">Избранные</NavLink>
+			<NavLink to="/" end>
+				Главная
+			</NavLink>
+			<NavLink to="/favorites" end>
+				Избранные
+			</NavLink>
 		</div>
 	);
 };
