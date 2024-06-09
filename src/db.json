@@ -6,7 +6,7 @@
 			"last_name": "Булгаков",
 			"age": 30,
 			"about": "frontend-разработчик, тимлид",
-			"image_url": "https://fastly.picsum.photos/id/337/150/150.jpg?hmac=iv5Xj43KQpu4y6LEbWeQOxdD4oFCeVndzuVmm_MvVUw",
+			"image_url": "https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 			"contacts": {
 				"phone": "+7 987 123 4567",
 				"email": "dev@ya.ru"
@@ -27,7 +27,7 @@
 			"last_name": "Соколов",
 			"age": 37,
 			"about": "frontend-разработчик",
-			"image_url": "https://fastly.picsum.photos/id/981/150/150.jpg?hmac=BdaUDERcitfyXVohdj2-IsbKZimqshEON1UihYc5lKw",
+			"image_url": "https://fastly.picsum.photos/id/904/100/100.jpg?hmac=Qxe6QmbMqBa1MkCbQzspJdO1YIlyvMDAL1S9CDe_Svg",
 			"contacts": null
 		},
 		{
@@ -36,7 +36,7 @@
 			"last_name": "Тетенёв",
 			"age": 27,
 			"about": "frontend-разработчик",
-			"image_url": "https://fastly.picsum.photos/id/999/150/150.jpg?hmac=pztvMJgV08apuMia_aADgaSLBhyB-eJ2w6nwxZR4NRc",
+			"image_url": "https://fastly.picsum.photos/id/454/100/100.jpg?hmac=NKqtKqUnck5jUbOptAYMmZACclYTdd4x7wInEfscYg4",
 			"contacts": null
 		},
 		{
@@ -45,7 +45,7 @@
 			"last_name": "Евлентьев",
 			"age": 27,
 			"about": "frontend-разработчик",
-			"image_url": "https://fastly.picsum.photos/id/586/150/150.jpg?hmac=Qy0on7NjDF8LIRY2zbW9e6w4zco_fLPizk4cTrSt15Q",
+			"image_url": "https://fastly.picsum.photos/id/667/100/100.jpg?hmac=ruvszJgLEHPW7wrWLgJK1Kc0wRY5LKPGSg-UUytr2fw",
 			"contacts": null
 		}
 	]
