@@ -1,3 +1,3 @@
 export const URL = {
-	DEVELOPERS: 'http://localhost:3005/developers/',
+	DEVELOPERS: 'https://api-todo-list-vercel.vercel.app/developers/',
 };
