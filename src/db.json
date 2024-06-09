@@ -1,7 +1,7 @@
 {
 	"developers": [
 		{
-			"id": 1,
+			"id": "1",
 			"first_name": "Александр",
 			"last_name": "Булгаков",
 			"age": 30,
@@ -13,7 +13,7 @@
 			}
 		},
 		{
-			"id": 2,
+			"id": "2",
 			"first_name": "Дмитрий",
 			"last_name": "Колотуша",
 			"age": 30,
@@ -22,7 +22,7 @@
 			"contacts": null
 		},
 		{
-			"id": 3,
+			"id": "3",
 			"first_name": "Алексей",
 			"last_name": "Соколов",
 			"age": 37,
@@ -31,7 +31,7 @@
 			"contacts": null
 		},
 		{
-			"id": 4,
+			"id": "4",
 			"first_name": "Владислав",
 			"last_name": "Тетенёв",
 			"age": 27,
@@ -40,7 +40,7 @@
 			"contacts": null
 		},
 		{
-			"id": 5,
+			"id": "5",
 			"first_name": "Константин",
 			"last_name": "Евлентьев",
 			"age": 27,

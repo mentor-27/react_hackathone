@@ -61,7 +61,7 @@ const FavoritesContainer = ({ className }) => {
 							<DevCard
 								key={favoriteDeveloper.id}
 								dev={favoriteDeveloper}
-								onClick={handleRemoveFavorite}
+								onClick={() => handleRemoveFavorite(favoriteDeveloper.id)}
 							/>
 						))
 					) : (

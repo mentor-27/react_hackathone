@@ -16,6 +16,6 @@ export const addFavoriteDevelopersInLocalStorage = id => {
 
 export const removeFavoriteDevelopersFromLocalStorage = id => {
 	let favorites = getFavoriteDevelopersFromLocalStorage();
-	favorites = favorites.filter(favoritesId => favoritesId !== id);
+	favorites = favorites.filter(favoritesId => favoritesId !== +id);
 	localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
 };
