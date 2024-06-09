@@ -21,7 +21,8 @@ export const Header = styled(HeaderContainer)`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 1200px;
+	max-width: 1200px;
+	width: 100%;
 	height: 80px;
 	position: fixed;
 	top: 0;

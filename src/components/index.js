@@ -9,3 +9,4 @@ export * from './Badge/Badge';
 export * from './Breadcrumbs/Breadcrumbs';
 export * from './Slider/Slider';
 export * from './DevCard/DevCard';
+export * from './Weather/Weather';
