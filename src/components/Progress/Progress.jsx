@@ -36,14 +36,6 @@ const ProgressContainer = ({ className, percent, label, color, type }) => {
 	);
 };
 
-ProgressContainer.propTypes = {
-	className: PropTypes.string,
-	percent: PropTypes.number.isRequired,
-	label: PropTypes.string,
-	color: PropTypes.string,
-	type: PropTypes.string.isRequired,
-};
-
 export const Progress = styled(ProgressContainer)`
 	display: flex;
 	flex-direction: column;
@@ -92,3 +84,10 @@ export const Progress = styled(ProgressContainer)`
 		dominant-baseline: middle;
 	}
 `;
+
+Progress.propTypes = {
+	percent: PropTypes.number.isRequired,
+	label: PropTypes.string,
+	color: PropTypes.string,
+	type: PropTypes.string.isRequired,
+};

@@ -1,9 +1,10 @@
 import { Badge, Title } from '../';
 import { getAgeSign, getRandomColor } from '../../utils';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const DevCardContainer = ({ className, dev, onClick }) => {
-	const { id, firstName, lastName, age, about, imageUrl, badges } = dev;
+	const { firstName, lastName, age, about, imageUrl, badges } = dev;
 
 	return (
 		<div className={className} {...(onClick ? { onClick: onClick } : {})}>
@@ -89,7 +90,6 @@ export const DevCard = styled(DevCardContainer)`
 		width: 100%;
 		object-fit: cover;
 		object-position: 50%;
-		/* background-position: 50%; */
 	}
 
 	& .devInfoContainer {
@@ -98,6 +98,7 @@ export const DevCard = styled(DevCardContainer)`
 		align-items: flex-end;
 		justify-content: space-between;
 		height: 100%;
+		cursor: pointer;
 		z-index: 1;
 	}
 
@@ -112,3 +113,14 @@ export const DevCard = styled(DevCardContainer)`
 		font-size: 12px;
 	}
 `;
+
+DevCard.propTypes = {
+	dev: PropTypes.shape({
+		firstName: PropTypes.string.isRequired,
+		lastName: PropTypes.string.isRequired,
+		age: PropTypes.number.isRequired,
+		about: PropTypes.string.isRequired,
+		imageUrl: PropTypes.string.isRequired,
+		badges: PropTypes.arrayOf(PropTypes.string),
+	}),
+};

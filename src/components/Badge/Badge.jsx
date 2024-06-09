@@ -21,6 +21,5 @@ export const Badge = styled(BadgeContainer)`
 `;
 
 Badge.propTypes = {
-	className: PropTypes.string,
-	children: PropTypes.node.isRequired,
+	children: PropTypes.string.isRequired,
 };

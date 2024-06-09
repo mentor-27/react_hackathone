@@ -5,7 +5,7 @@ const HeaderContainer = ({ className }) => {
 	return (
 		<header className={className}>
 			<div className="logoContainer">
-				<Title level="1" size="1.5rem">
+				<Title level="1" size="1.5rem" cursor="default">
 					Devs
 					<br />
 					Team

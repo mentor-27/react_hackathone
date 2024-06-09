@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const SliderContainer = ({ className, images }) => {
@@ -87,3 +88,7 @@ export const Slider = styled(SliderContainer)`
 		object-fit: cover;
 	}
 `;
+
+Slider.propTypes = {
+	images: PropTypes.arrayOf(PropTypes.string).isRequired,
+};

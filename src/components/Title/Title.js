@@ -25,10 +25,10 @@ export const Title = styled(TitleContainer)`
 	text-align: ${({ textAlign = 'left' }) => textAlign};
 	font-size: ${({ size }) => size};
 	width: ${({ width = 'auto' }) => width};
+	cursor: ${({ cursor = 'unset' }) => cursor};
 `;
 
 Title.propTypes = {
 	children: PropTypes.node,
 	level: PropTypes.string,
-	margin: PropTypes.string,
 };

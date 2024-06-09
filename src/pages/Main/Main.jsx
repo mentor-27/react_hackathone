@@ -5,13 +5,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setDevs } from '../../redux/actions';
 import { selectDevs } from '../../redux/selectors';
+import { images } from '../../consts';
 import styled from 'styled-components';
-
-const images = [
-	'https://picstatio.com/download/2560x1440/uhzu5z/reactJS-wallpaper.png',
-	'https://remix.run/blog-images/posts/remixing-react-router/image.jpg',
-	'https://e0.pxfuel.com/wallpapers/316/193/desktop-wallpaper-javascript.jpg',
-];
 
 const MainContainer = ({ className }) => {
 	const dispatch = useDispatch();

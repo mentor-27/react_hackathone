@@ -39,13 +39,13 @@ const FavoritesContainer = ({ className }) => {
 	return (
 		<>
 			<div className={className}>
-				<Title level="1" textAlign="center" margin="32px 0 32px" size="2.2rem">
+				<Title level="1" textAlign="center" margin="32px 0">
 					Избранные участники разработки
 					<br />
 					приложения хакатона
 				</Title>
 				<div className="cards">
-					{favDevs.length > 0 ? (
+					{favDevs.length ? (
 						favDevs.map(favoriteDeveloper => (
 							<DevCard
 								key={favoriteDeveloper.id}

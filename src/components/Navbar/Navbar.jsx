@@ -41,7 +41,3 @@ export const Navbar = styled(NavbarContainer)`
 		background-color: #000;
 	}
 `;
-
-Navbar.propTypes = {
-	className: PropTypes.string,
-};

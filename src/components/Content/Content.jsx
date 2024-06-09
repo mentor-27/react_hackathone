@@ -1,18 +1,15 @@
-import styled from 'styled-components';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { useMatch } from 'react-router-dom';
-
-const items = {
-	devPage: 'Анкета',
-	favorites: 'Избранные',
-};
+import { paths } from '../../consts';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const ContentContainer = ({ className, children }) => {
 	const path = useMatch('/');
 
 	return (
 		<main className={className}>
-			{!path && <Breadcrumbs items={items}></Breadcrumbs>}
+			{!path && <Breadcrumbs items={paths}></Breadcrumbs>}
 			{children}
 		</main>
 	);
@@ -29,3 +26,7 @@ export const Content = styled(ContentContainer)`
 	border-radius: 12px;
 	overflow: hidden auto;
 `;
+
+Content.propTypes = {
+	children: PropTypes.node,
+};
