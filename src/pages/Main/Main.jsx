@@ -1,27 +1,28 @@
 import { useEffect, useState } from 'react';
 import { getDevelopers } from '../../api';
 import { DevCard, Title } from '../../components';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setDevs } from '../../redux/actions';
+import { selectDevs } from '../../redux/selectors';
+import styled from 'styled-components';
 
 const MainContainer = ({ className }) => {
-	const [developers, setDevelopers] = useState([]);
-	const [loading, setLoading] = useState(true);
+	const dispatch = useDispatch();
+	const devs = useSelector(selectDevs);
+	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
 		getDevelopers()
-			.then(loadedDevelopers => {
-				setDevelopers(loadedDevelopers);
-				setLoading(false);
+			.then(devs => {
+				dispatch(setDevs(devs));
 			})
-			.catch(error => {
-				setError(error);
-				setLoading(false);
-			});
+			.catch(setError)
+			.finally(() => setIsLoading(false));
 	}, []);
 
-	if (loading) {
+	if (isLoading) {
 		return <div className={className}>Загрузка...</div>;
 	}
 
@@ -37,8 +38,8 @@ const MainContainer = ({ className }) => {
 				разработки приложения хакатона
 			</Title>
 			<div className="cards">
-				{developers.length ? (
-					developers.map(dev => (
+				{devs.length ? (
+					devs.map(dev => (
 						<Link key={dev.id} to={`devPage/${dev.id}`}>
 							<DevCard key={dev.id} dev={dev} />
 						</Link>
@@ -57,7 +58,7 @@ export const Main = styled(MainContainer)`
 	align-items: center;
 	padding: 20px;
 
-	& > .cards {
+	& .cards {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 48px;
