@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react';
 import { getDevelopers } from '../../api';
-import { DevCard, Title } from '../../components';
+import { DevCard, Slider, Title } from '../../components';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setDevs } from '../../redux/actions';
 import { selectDevs } from '../../redux/selectors';
 import styled from 'styled-components';
+
+const images = [
+	'https://picstatio.com/download/2560x1440/uhzu5z/reactJS-wallpaper.png',
+	'https://remix.run/blog-images/posts/remixing-react-router/image.jpg',
+	'https://e0.pxfuel.com/wallpapers/316/193/desktop-wallpaper-javascript.jpg',
+];
 
 const MainContainer = ({ className }) => {
 	const dispatch = useDispatch();
@@ -37,6 +43,7 @@ const MainContainer = ({ className }) => {
 				<br />
 				разработки приложения хакатона
 			</Title>
+			<Slider images={images} margin="0 0 32px 0" width="800px" />
 			<div className="cards">
 				{devs.length ? (
 					devs.map(dev => (
