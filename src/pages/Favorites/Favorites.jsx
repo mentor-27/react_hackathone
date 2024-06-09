@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getDevelopers } from '../../api';
-import {
-	addFavoriteDevelopersInLocalStorage,
-	getFavoriteDevelopersFromLocalStorage,
-	removeFavoriteDevelopersFromLocalStorage,
-} from '../../utils';
+import { getFavsFromLS, removeFavFromLS } from '../../utils';
 import { Badge, DevCard, Title } from '../../components';
 import styled from 'styled-components';
 
@@ -13,13 +9,8 @@ const FavoritesContainer = ({ className }) => {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
-	// для заполнения localStorage для ПРОВЕРКИ
-	// for (let i = 1; i <= 3; i++) {
-	// 	addFavoriteDevelopersInLocalStorage(i);
-	// }
-
 	useEffect(() => {
-		const favoritesIds = getFavoriteDevelopersFromLocalStorage();
+		const favoritesIds = getFavsFromLS();
 
 		Promise.all(
 			favoritesIds.map(favoriteDeveloperId => getDevelopers(favoriteDeveloperId)),
@@ -35,7 +26,7 @@ const FavoritesContainer = ({ className }) => {
 	}, []);
 
 	const handleRemoveFavorite = id => {
-		removeFavoriteDevelopersFromLocalStorage(id);
+		removeFavFromLS(id);
 		setFavoritesDevelopers(favoritesDevelopers.filter(developer => developer.id !== id));
 	};
 
@@ -50,7 +41,7 @@ const FavoritesContainer = ({ className }) => {
 	return (
 		<>
 			<div className={className}>
-				<Title level="1" textAlign="center" margin="64px 0 16px" size="2.2rem">
+				<Title level="1" textAlign="center" margin="32px 0 32px" size="2.2rem">
 					Избранные участники разработки
 					<br />
 					приложения хакатона
@@ -65,7 +56,7 @@ const FavoritesContainer = ({ className }) => {
 							/>
 						))
 					) : (
-						<Badge color="#007bff" size="24px">
+						<Badge color="tomato" size="24px">
 							Избранных разработчиков не найдено!
 						</Badge>
 					)}

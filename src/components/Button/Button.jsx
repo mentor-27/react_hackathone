@@ -9,12 +9,6 @@ const ButtonContainer = ({ className, onClick, children }) => {
 	);
 };
 
-ButtonContainer.propTypes = {
-	className: PropTypes.string,
-	onClick: PropTypes.func.isRequired,
-	children: PropTypes.node.isRequired,
-};
-
 export const Button = styled(ButtonContainer)`
 	padding: 0.5rem 1rem;
 	margin: ${({ margin }) => margin || '0'};
@@ -39,3 +33,9 @@ export const Button = styled(ButtonContainer)`
 		cursor: not-allowed;
 	}
 `;
+
+Button.propTypes = {
+	className: PropTypes.string,
+	onClick: PropTypes.func.isRequired,
+	children: PropTypes.node.isRequired,
+};

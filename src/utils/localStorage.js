@@ -1,21 +1,21 @@
-const FAVORITES_KEY = 'favoritesDevelopers';
+import { LS_KEY } from '../consts';
 
-export const getFavoriteDevelopersFromLocalStorage = () => {
-	const favorites = localStorage.getItem(FAVORITES_KEY);
+export const getFavsFromLS = () => {
+	const favorites = localStorage.getItem(LS_KEY);
 
 	return favorites ? JSON.parse(favorites) : [];
 };
 
-export const addFavoriteDevelopersInLocalStorage = id => {
-	const favorites = getFavoriteDevelopersFromLocalStorage();
+export const addFavToLS = id => {
+	const favorites = getFavsFromLS();
 	if (!favorites.includes(id)) {
 		favorites.push(id);
 	}
-	localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+	localStorage.setItem(LS_KEY, JSON.stringify(favorites));
 };
 
-export const removeFavoriteDevelopersFromLocalStorage = id => {
-	let favorites = getFavoriteDevelopersFromLocalStorage();
+export const removeFavFromLS = id => {
+	let favorites = getFavsFromLS();
 	favorites = favorites.filter(favoritesId => favoritesId !== +id);
-	localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+	localStorage.setItem(LS_KEY, JSON.stringify(favorites));
 };

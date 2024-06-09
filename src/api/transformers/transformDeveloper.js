@@ -5,6 +5,8 @@ export const transformDeveloper = ({
 	age,
 	about,
 	image_url,
+	techs,
+	badges,
 	contacts,
 }) => ({
 	id,
@@ -13,6 +15,8 @@ export const transformDeveloper = ({
 	age,
 	about,
 	imageUrl: image_url,
+	techs,
+	badges,
 	contacts: contacts
 		? {
 				phone: contacts.phone,

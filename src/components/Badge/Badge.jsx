@@ -5,11 +5,6 @@ const BadgeContainer = ({ className, children }) => {
 	return <span className={className}>{children}</span>;
 };
 
-BadgeContainer.propTypes = {
-	className: PropTypes.string,
-	children: PropTypes.node.isRequired,
-};
-
 export const Badge = styled(BadgeContainer)`
 	display: inline-block;
 	padding: 2px 4px;
@@ -21,10 +16,11 @@ export const Badge = styled(BadgeContainer)`
 	text-align: center;
 	white-space: nowrap;
 	border-radius: 4px;
-	color: #fcfcfc;
+	color: #fefefe;
 	background-color: ${({ color }) => color || '#007bff'};
 `;
 
 Badge.propTypes = {
-	color: PropTypes.string,
+	className: PropTypes.string,
+	children: PropTypes.node.isRequired,
 };

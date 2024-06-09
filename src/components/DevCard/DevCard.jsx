@@ -1,33 +1,29 @@
 import { Badge, Title } from '../';
-import { getAgeSign } from '../../utils';
+import { getAgeSign, getRandomColor } from '../../utils';
 import styled from 'styled-components';
 
 const DevCardContainer = ({ className, dev, onClick }) => {
-	const { id, firstName, lastName, age, about, imageUrl, contacts } = dev || {}; // раскомментируй
+	const { id, firstName, lastName, age, about, imageUrl, badges } = dev;
 
 	return (
-		<div className={className} onClick={() => onClick(id)}>
+		<div className={className} {...(onClick ? { onClick: onClick(id) } : {})}>
 			<div className="tlDeco"></div>
 			<div className="brDeco"></div>
 			<div className="devImgContainer">
-				<img
-					className="devImg"
-					src={
-						// 'https://fastly.picsum.photos/id/907/110/110.jpg?hmac=gd9LnNX-aBJmu9WQUr1JbY85fzLoyr7uwgO1EdAaKUs' // imageUrl
-						// 'https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-						imageUrl
-					}
-					alt={`${lastName}_${firstName}`} // `${lastName}_${firstName}` ${'James'}_${'Bond'}
-				/>
+				<img className="devImg" src={imageUrl} alt={`${lastName}_${firstName}`} />
 			</div>
 			<div className="devInfoContainer">
-				<Title level="3">{`${firstName} ${lastName}`}</Title>{' '}
-				{/* `${firstName} ${lastName}` 'James Bond' */}
-				<span>{getAgeSign(`${age}`)}</span> {/* getAgeSign(age) */}
-				<div className="devBadgesContainer">
-					<Badge color="tomato">teamlead</Badge>
-					<Badge color="teal">dev</Badge>
-				</div>
+				<Title level="3">{`${firstName} ${lastName}`}</Title>
+				<span>{getAgeSign(`${age}`)}</span>
+				{badges.length && (
+					<div className="devBadgesContainer">
+						{badges.map(badge => (
+							<Badge key={badge} color={() => getRandomColor()}>
+								{badge}
+							</Badge>
+						))}
+					</div>
+				)}
 				<p className="devAbout">{about}</p>
 			</div>
 		</div>
