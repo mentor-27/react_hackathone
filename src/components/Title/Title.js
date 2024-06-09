@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const TitleContainer = ({ className, level = '2', children, size }) => {
+const TitleContainer = ({ className, level = '2', children }) => {
 	switch (level) {
 		case '1':
 			return <h1 className={className}>{children}</h1>;
@@ -23,7 +23,8 @@ const TitleContainer = ({ className, level = '2', children, size }) => {
 export const Title = styled(TitleContainer)`
 	margin: ${({ margin = '0' }) => margin};
 	text-align: ${({ textAlign = 'left' }) => textAlign};
-	font-size: ${({ size = '1rem' }) => size};
+	font-size: ${({ size }) => size};
+	width: ${({ width = 'auto' }) => width};
 `;
 
 Title.propTypes = {

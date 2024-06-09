@@ -1,85 +1,89 @@
-// import Slider from 'react-slick';
-// import 'slick-carousel/slick/slick.css';
-// import 'slick-carousel/slick/slick-theme.css';
-// import PropTypes from 'prop-types';
-// import styled from 'styled-components';
+import { useState } from 'react';
+import styled from 'styled-components';
 
-// const SampleNextArrow = props => {
-// 	const { className, style, onClick } = props;
-// 	return (
-// 		<div
-// 			className={className}
-// 			style={{ ...style, display: 'block', background: 'gray' }}
-// 			onClick={onClick}
-// 		/>
-// 	);
-// };
+const SliderContainer = ({ className, images }) => {
+	const [currIndex, setCurrIndex] = useState(0);
 
-// SampleNextArrow.propTypes = {
-// 	className: PropTypes.string,
-// 	style: PropTypes.object,
-// 	onClick: PropTypes.func,
-// };
+	const onPrevClick = () => {
+		setCurrIndex(prev => {
+			return prev === 0 ? images.length - 1 : prev - 1;
+		});
+	};
 
-// const SamplePrevArrow = props => {
-// 	const { className, style, onClick } = props;
-// 	return (
-// 		<div
-// 			className={className}
-// 			style={{ ...style, display: 'block', background: 'gray' }}
-// 			onClick={onClick}
-// 		/>
-// 	);
-// };
+	const onNextClick = () => {
+		setCurrIndex(prev => {
+			return prev === images.length - 1 ? 0 : prev + 1;
+		});
+	};
 
-// SamplePrevArrow.propTypes = {
-// 	className: PropTypes.string,
-// 	style: PropTypes.object,
-// 	onClick: PropTypes.func,
-// };
+	return (
+		<div className={className}>
+			<button className="leftArrow" onClick={onPrevClick}>
+				<div></div>
+			</button>
+			<button className="rightArrow" onClick={onNextClick}>
+				<div></div>
+			</button>
+			<img className="sliderImg" src={images[currIndex]} alt="img" />
+		</div>
+	);
+};
 
-// const SliderContainer = ({ className, slides }) => {
-// 	const settings = {
-// 		dots: true,
-// 		infinite: true,
-// 		speed: 500,
-// 		slidesToShow: 1,
-// 		slidesToScroll: 1,
-// 		nextArrow: <SampleNextArrow />,
-// 		prevArrow: <SamplePrevArrow />,
-// 	};
+export const Slider = styled(SliderContainer)`
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	height: ${({ height = '400px' }) => height};
+	width: ${({ width = 'auto' }) => width};
+	margin: ${({ margin = '0 auto' }) => margin};
+	position: relative;
+	box-shadow: 0 0 10px #0008;
+	background-color: #222;
+	border-radius: 8px;
+	overflow: hidden;
 
-// 	return (
-// 		<div className={className}>
-// 			<Slider {...settings}>
-// 				{slides.map((slide, index) => (
-// 					<div key={index} className="slide">
-// 						{slide}
-// 					</div>
-// 				))}
-// 			</Slider>
-// 		</div>
-// 	);
-// };
+	& .leftArrow,
+	.rightArrow {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 15%;
+		position: absolute;
+		inset: 0 auto 0 0;
+		border: none;
+		outline: none;
+		background: linear-gradient(to right, #0004, transparent);
+		cursor: pointer;
+	}
 
-// SliderContainer.propTypes = {
-// 	className: PropTypes.string,
-// 	slides: PropTypes.arrayOf(PropTypes.node).isRequired,
-// };
+	& .leftArrow div,
+	.rightArrow div {
+		width: 25px;
+		height: 25px;
+		border-top: 4px solid #fff8;
+		border-left: 4px solid #fff8;
+		border-radius: 4px;
+		filter: drop-shadow(0 0 2px #0008);
+		transform: rotate(-45deg);
+		transition: 0.3s;
+	}
 
-// export const StyledSlider = styled(SliderContainer)`
-// 	.slide {
-// 		display: flex;
-// 		justify-content: center;
-// 		align-items: center;
-// 		height: 300px;
-// 		background-color: #ccc;
-// 		color: #333;
-// 		font-size: 1.5rem;
-// 	}
+	& .leftArrow:hover div,
+	.rightArrow:hover div {
+		border-color: #fff;
+	}
 
-// 	.slick-prev:before,
-// 	.slick-next:before {
-// 		color: black;
-// 	}
-// `;
+	& .rightArrow {
+		inset: 0 0 0 auto;
+		background: linear-gradient(to left, #0004, transparent);
+	}
+
+	& .rightArrow div {
+		transform: rotate(135deg);
+	}
+
+	& .sliderImg {
+		width: 100%;
+		object-fit: cover;
+	}
+`;

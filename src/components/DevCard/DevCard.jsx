@@ -20,7 +20,10 @@ const DevCardContainer = ({ className, dev }) => {
 				/>
 			</div>
 			<div className="devInfoContainer">
-				<Title level="3">{'James Bond'}</Title> {/* `${firstName} ${lastName}` */}
+				<Title level="4" textAlign="right" width="min-content">
+					{'James Bond'}
+				</Title>{' '}
+				{/* `${firstName} ${lastName}` */}
 				<span>{getAgeSign('25')}</span> {/* getAgeSign(age) */}
 				<div className="devBadgesContainer">
 					<Badge color="tomato">teamlead</Badge>
@@ -77,7 +80,8 @@ export const DevCard = styled(DevCardContainer)`
 
 	& .devImgContainer {
 		height: 110px;
-		aspect-ratio: 1;
+		width: 110px;
+		min-width: 110px;
 		overflow: hidden;
 		border: 4px #fff solid;
 		border-radius: 50%;

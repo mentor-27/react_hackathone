@@ -1,6 +1,12 @@
 import { Link } from 'react-router-dom';
-import { DevCard, Title } from '../../components';
+import { DevCard, Slider, Title } from '../../components';
 import styled from 'styled-components';
+
+const images = [
+	'https://e0.pxfuel.com/wallpapers/316/193/desktop-wallpaper-javascript.jpg',
+	'https://picstatio.com/download/2560x1440/uhzu5z/reactJS-wallpaper.png',
+	'https://remix.run/blog-images/posts/remixing-react-router/image.jpg',
+];
 
 const MainContainer = ({ className }) => {
 	return (
@@ -10,6 +16,7 @@ const MainContainer = ({ className }) => {
 				<br />
 				разработки приложения хакатона
 			</Title>
+			<Slider margin="0 auto 64px" images={images} width="600px" height="400px;" />
 			<div className="devList">
 				{new Array(10).fill('').map(item => (
 					<Link key={Math.random()}>
