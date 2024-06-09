@@ -2,11 +2,11 @@ import { Badge, Title } from '../';
 import { getAgeSign } from '../../utils';
 import styled from 'styled-components';
 
-const DevCardContainer = ({ className, dev }) => {
-	const { firstName, lastName, age, about, imageUrl, contacts } = dev || {}; // раскомментируй
+const DevCardContainer = ({ className, dev, onClick }) => {
+	const { id, firstName, lastName, age, about, imageUrl, contacts } = dev || {}; // раскомментируй
 
 	return (
-		<div className={className}>
+		<div className={className} onClick={() => onClick(id)}>
 			<div className="tlDeco"></div>
 			<div className="brDeco"></div>
 			<div className="devImgContainer">

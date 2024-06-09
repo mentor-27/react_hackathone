@@ -3,6 +3,7 @@ import { getDevelopers } from '../../api';
 import {
 	addFavoriteDevelopersInLocalStorage,
 	getFavoriteDevelopersFromLocalStorage,
+	removeFavoriteDevelopersFromLocalStorage,
 } from '../../utils';
 import { Badge, DevCard, Title } from '../../components';
 import styled from 'styled-components';
@@ -13,9 +14,9 @@ const FavoritesContainer = ({ className }) => {
 	const [error, setError] = useState(null);
 
 	// для заполнения localStorage для ПРОВЕРКИ
-	for (let i = 1; i <= 3; i++) {
-		addFavoriteDevelopersInLocalStorage(i);
-	}
+	// for (let i = 1; i <= 3; i++) {
+	// 	addFavoriteDevelopersInLocalStorage(i);
+	// }
 
 	useEffect(() => {
 		const favoritesIds = getFavoriteDevelopersFromLocalStorage();
@@ -32,6 +33,11 @@ const FavoritesContainer = ({ className }) => {
 				setLoading(false);
 			});
 	}, []);
+
+	const handleRemoveFavorite = id => {
+		removeFavoriteDevelopersFromLocalStorage(id);
+		setFavoritesDevelopers(favoritesDevelopers.filter(developer => developer.id !== id));
+	};
 
 	if (loading) {
 		return <div className={className}>Загрузка...</div>;
@@ -52,7 +58,11 @@ const FavoritesContainer = ({ className }) => {
 				<div className="cards">
 					{favoritesDevelopers.length > 0 ? (
 						favoritesDevelopers.map(favoriteDeveloper => (
-							<DevCard key={favoriteDeveloper.id} dev={favoriteDeveloper} />
+							<DevCard
+								key={favoriteDeveloper.id}
+								dev={favoriteDeveloper}
+								onClick={handleRemoveFavorite}
+							/>
 						))
 					) : (
 						<Badge color="#007bff" size="24px">
