@@ -1,12 +1,12 @@
 import { Badge, Title } from '../';
-import { getAgeSign } from '../../utils/getAgeSign';
+import { getAgeSign } from '../../utils';
 import styled from 'styled-components';
 
-const DevCardContainer = ({ className, dev }) => {
-	const { firstName, lastName, age, about, imgageUrl, contacts } = dev || {}; // раскомментируй
+const DevCardContainer = ({ className, dev, onClick }) => {
+	const { id, firstName, lastName, age, about, imageUrl, contacts } = dev || {}; // раскомментируй
 
 	return (
-		<div className={className}>
+		<div className={className} onClick={() => onClick(id)}>
 			<div className="tlDeco"></div>
 			<div className="brDeco"></div>
 			<div className="devImgContainer">
@@ -14,22 +14,21 @@ const DevCardContainer = ({ className, dev }) => {
 					className="devImg"
 					src={
 						// 'https://fastly.picsum.photos/id/907/110/110.jpg?hmac=gd9LnNX-aBJmu9WQUr1JbY85fzLoyr7uwgO1EdAaKUs' // imageUrl
-						'https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+						// 'https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+						imageUrl
 					}
-					alt={`${'James'}_${'Bond'}`} // `${lastName}_${firstName}`
+					alt={`${lastName}_${firstName}`} // `${lastName}_${firstName}` ${'James'}_${'Bond'}
 				/>
 			</div>
 			<div className="devInfoContainer">
-				<Title level="4" textAlign="right" width="min-content">
-					{'James Bond'}
-				</Title>{' '}
-				{/* `${firstName} ${lastName}` */}
-				<span>{getAgeSign('25')}</span> {/* getAgeSign(age) */}
+				<Title level="3">{`${firstName} ${lastName}`}</Title>{' '}
+				{/* `${firstName} ${lastName}` 'James Bond' */}
+				<span>{getAgeSign(`${age}`)}</span> {/* getAgeSign(age) */}
 				<div className="devBadgesContainer">
 					<Badge color="tomato">teamlead</Badge>
 					<Badge color="teal">dev</Badge>
 				</div>
-				<p className="devAbout">{'frontend-разработчик'}</p> {/* about */}
+				<p className="devAbout">{about}</p>
 			</div>
 		</div>
 	);
