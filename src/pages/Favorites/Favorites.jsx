@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
-import { getDeveloper } from '../../requests';
-import { getFavoriteDevelopersFromLocalStorage } from '../../utils';
-import { DevCard } from '../../components';
+import { getDevelopers } from '../../requests';
+import {
+	addFavoriteDevelopersInLocalStorage,
+	getFavoriteDevelopersFromLocalStorage,
+} from '../../utils';
+import { Badge, DevCard, Title } from '../../components';
 import styled from 'styled-components';
 
 const FavoritesContainer = ({ className }) => {
@@ -9,17 +12,22 @@ const FavoritesContainer = ({ className }) => {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
+	// для заполнения localStorage для ПРОВЕРКИ
+	for (let i = 1; i <= 3; i++) {
+		addFavoriteDevelopersInLocalStorage(i);
+	}
+
 	useEffect(() => {
 		const favoritesIds = getFavoriteDevelopersFromLocalStorage();
 
 		Promise.all(
-			favoritesIds.map(favoriteDeveloperId => getDeveloper(favoriteDeveloperId)),
+			favoritesIds.map(favoriteDeveloperId => getDevelopers(favoriteDeveloperId)),
 		)
 			.then(favoriteDevelopers => {
 				setFavoritesDevelopers(favoriteDevelopers);
 				setLoading(false);
 			})
-			.then(error => {
+			.catch(error => {
 				setError(error);
 				setLoading(false);
 			});
@@ -34,22 +42,39 @@ const FavoritesContainer = ({ className }) => {
 	}
 
 	return (
-		<div className={className}>
-			{favoritesDevelopers.length > 0 ? (
-				favoritesDevelopers.map(favoriteDeveloper => (
-					<DevCard key={favoriteDeveloper.id} dev={favoriteDeveloper} />
-				))
-			) : (
-				<p>Избранных разработчиков не найдено!</p>
-			)}
-		</div>
+		<>
+			<div className={className}>
+				<Title level="1" textAlign="center" margin="64px 0 16px" size="2.2rem">
+					Избранные участники разработки
+					<br />
+					приложения хакатона
+				</Title>
+				<div className="cards">
+					{favoritesDevelopers.length > 0 ? (
+						favoritesDevelopers.map(favoriteDeveloper => (
+							<DevCard key={favoriteDeveloper.id} dev={favoriteDeveloper} />
+						))
+					) : (
+						<Badge color="#007bff" size="24px">
+							Избранных разработчиков не найдено!
+						</Badge>
+					)}
+				</div>
+			</div>
+		</>
 	);
 };
 
 export const Favorites = styled(FavoritesContainer)`
 	display: flex;
-	flex-wrap: wrap;
-	gap: 20px;
+	flex-direction: column;
+	align-items: center;
 	padding: 20px;
-	justify-content: center;
+
+	& > .cards {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+		justify-content: center;
+	}
 `;

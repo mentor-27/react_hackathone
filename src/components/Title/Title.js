@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const TitleContainer = ({ className, level = '2', children, size }) => {
+const TitleContainer = ({ className, level = '2', children }) => {
 	switch (level) {
 		case '1':
 			return <h1 className={className}>{children}</h1>;

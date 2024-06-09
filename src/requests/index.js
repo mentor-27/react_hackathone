@@ -1,1 +1,1 @@
-export * from './getDeveloper';
+export * from './getDevelopers';

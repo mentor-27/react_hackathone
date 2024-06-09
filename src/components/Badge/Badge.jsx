@@ -16,7 +16,7 @@ export const Badge = styled(BadgeContainer)`
 	width: fit-content;
 	height: fit-content;
 	margin: 2px;
-	font-size: 10px;
+	font-size: ${({ size }) => size || '10px'};
 	font-weight: 600;
 	text-align: center;
 	white-space: nowrap;
