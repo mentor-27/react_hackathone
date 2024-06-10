@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/react_hackathone/static/css/main.94931759.css",
-    "main.js": "/react_hackathone/static/js/main.765f8d6d.js",
+    "main.js": "/react_hackathone/static/js/main.baad0dbf.js",
     "index.html": "/react_hackathone/index.html",
     "main.94931759.css.map": "/react_hackathone/static/css/main.94931759.css.map",
-    "main.765f8d6d.js.map": "/react_hackathone/static/js/main.765f8d6d.js.map"
+    "main.baad0dbf.js.map": "/react_hackathone/static/js/main.baad0dbf.js.map"
   },
   "entrypoints": [
     "static/css/main.94931759.css",
-    "static/js/main.765f8d6d.js"
+    "static/js/main.baad0dbf.js"
   ]
 }
