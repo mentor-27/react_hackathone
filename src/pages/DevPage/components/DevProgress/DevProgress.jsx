@@ -33,8 +33,7 @@ export const DevProgress = styled(DevProgressContainer)`
 	}
 `;
 
-DevProgressContainer.propTypes = {
-	className: PropType.string.isRequired,
+DevProgress.propTypes = {
 	techs: PropType.array.isRequired,
 	progressType: PropType.string.isRequired,
 };
